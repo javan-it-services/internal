@@ -1,0 +1,19 @@
+<div id='menu'><ul>
+<?php
+if (isset($Menu)):
+foreach ($Menu as $Title => $menuarray) {
+	echo '<li>';
+	if (isset($menuarray['active'])) {
+		if ($this->here==$menuarray['url']) {
+			echo '<strong><span class="activeMenuItem">'.$Title.'</span></strong>';	
+		} else {
+			echo $html->link('<span class="activeMenuItem">'.$Title.'</span>', $menuarray['url'],NULL,NULL,false);
+		}
+	} else {
+		echo $html->link($Title, $menuarray['url'],NULL,NULL,FALSE);
+	}
+	echo '</li>';
+}
+endif;
+?>
+</ul></div>

@@ -1,0 +1,1 @@
+<div class="flash_message flash_warn"><?php echo $content_for_layout ?></div>

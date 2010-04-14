@@ -1,0 +1,256 @@
+/* SVN FILE: $Id: cake.generic.css 7945 2008-12-19 02:16:01Z gwoo $ */
+/**
+ *
+ * PHP versions 4 and 5
+ *
+ * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ * @package       cake
+ * @subpackage    cake.app.webroot.css
+ * @since         CakePHP(tm)
+ * @version       $Revision: 7945 $
+ * @modifiedby    $LastChangedBy: gwoo $
+ * @lastmodified  $Date: 2008-12-18 18:16:01 -0800 (Thu, 18 Dec 2008) $
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
+
+/*.container_12*/
+/*{*/
+/*	background: #986 url('img/12_col.gif') repeat-y;*/
+/*}*/
+/**/
+.container_16
+{
+	background: #fff url('img/16_col.gif') repeat-y;
+}
+
+
+/*shortcut*/
+.ar{text-align: right}
+.ac{text-align: center}
+
+/*global*/
+a{
+    color: #296CBE;
+    text-decoration: none;
+}
+a:hover{
+      text-decoration: underline;
+}
+
+/* Layout */
+body#login{
+    background: #ffffff url('img/login_page_bg.png') repeat-x;
+}
+#container_login{margin-top: 60px;}
+#login_box{
+    margin-top: 40px;
+}
+
+#login_box .top{
+    line-height: 8px;
+    height: 8px;
+    background: transparent url('img/login_box_top.png') top no-repeat ;
+}
+#login_box .middle{
+    background: transparent url('img/login_box_content.png') repeat-y ;
+}
+#login_box .bottom{
+    line-height: 7px;
+    height: 7px;
+    background: transparent url('img/login_box_bottom.png') top no-repeat ;
+}
+#logbox_l .spacer{
+    padding: 20px 20px 20px 30px;
+}
+#logbox_r .spacer{
+    padding: 20px 10px 20px 0;
+}
+#ket{
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #aaaaaa;
+}
+.domino{margin-bottom: 24px}
+h2 span{font-size: 0.9em;font-weight:normal; color: rgb(180, 180, 180)}
+
+/* Forms */
+form {
+	clear: both;
+	margin-right: 20px;
+	padding: 0;
+}
+fieldset {
+	border: 1px solid #ccc;
+	margin-top: 30px;
+	padding: 16px 20px;
+}
+form div {
+	clear: both;
+	margin-bottom: 12px;
+	vertical-align: text-top;
+}
+form div.input {
+	color: #444;
+}
+form div.required {
+	color: #333;
+	font-weight: bold;
+}
+form div.submit {
+	border: 0;
+	clear: both;
+	margin-top: 10px;
+}
+label {
+	display: block;
+    font-weight:bold;
+	padding-right: 20px;
+}
+input{
+	clear: both;
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	padding: 2px;
+}
+
+/* =BUTTONS =BASE */
+/* Abstracted from the Wufoo implementation - thanks guys! */
+/* http://particletree.com/features/rediscovering-the-button-element/ */
+.buttons {
+	overflow: hidden; /* Float clearing for good browsers */
+}
+
+.buttons a.button, .buttons button {
+  display: block;
+  float: left;
+  background: #d4d4d4 url("img/bg_button_sprite.png") repeat-x top;
+  margin: 0 9px 0 0;
+  border: 1px solid #b4b4b4;
+  border-top: 1px solid #d4d4d4;
+  border-left: 1px solid #d4d4d4;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  font-weight: bold;
+  text-decoration: none;
+  color: #353535;
+  cursor: pointer;
+  padding: 5px 10px 6px 7px; /* Links */
+  white-space: nowrap;
+  letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+
+.buttons object { /* Force inline Flash objects to act like a button */
+  display: block;
+  float: left;
+  margin: 0 9px 0 0;
+  cursor: pointer;
+}
+
+.buttons button {
+  width: auto;
+  overflow: visible;
+  padding: 4px 10px 3px 7px; /* IE6 */
+}
+.buttons button[type] {
+  padding: 5px 10px 5px 7px; /* Firefox */
+  line-height: 18px; /* Safari */
+}
+*:first-child+html button[type] {
+  padding: 4px 10px 3px 7px; /* IE7 */
+}
+.buttons button img, .buttons a img {
+  margin: 0 3px -3px 0 !important;
+  padding: 0;
+  border: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* =BUTTONS =TWEAKS */
+
+.buttons a.button, .buttons button { /* Safari */
+  -webkit-border-radius: 14px;
+}
+
+.buttons a.button, .buttons button, x:-moz-any-link, x:default { /* Firefox 3 */
+  -moz-border-radius: 14px;
+}
+
+/* To prevent buttons from being blown out when placed inside of block elements other than forms */
+p .buttons, ul .buttons, ol .buttons {
+  font-size: 100%;
+}
+
+/* =BUTTONS =STANDARD */
+
+.buttons button:hover, .buttons a.button:hover{
+    color: #000000;
+  background: #eaeaea url('img/bg_button_sprite.png') repeat-x 0 -30px;
+border: 1px solid #BFE4FF;
+}
+.buttons button:active, .buttons a.button:active {
+    color: #000000;
+  background: #BFE4FF;
+border: 1px solid #97d2ff;
+}
+/* =BUTTONS =POSITIVE */
+
+button.positive, .buttons a.positive {
+  color: #529214;
+}
+
+.buttons a.positive:hover, button.positive:hover, .buttons a.positive:active {
+  background: #529214;
+  border: 1px solid #529214;
+  color: #fff;
+}
+
+/* =BUTTONS =NEGATIVE */
+
+.buttons a.negative, button.negative {
+  color: #d12f19;
+}
+
+.buttons a.negative:hover, button.negative:hover, .buttons a.negative:active {
+  background: #d12f19;
+  border: 1px solid #d12f19;
+  color: #fff;
+}
+
+/* =BUTTONS =DISABLED */
+
+.buttons a.disabled, button.disabled {
+  background: #b4b4b4;
+  border: 1px solid #b4b4b4;
+  color: #fff;
+}
+
+.buttons a.disabled:hover, button.disabled:hover {
+  background: #b4b4b4;
+  border: 1px solid #b4b4b4;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* =BUTTONS =PASSIVE */
+
+.buttons a.passive {
+  background: none;
+  border: 1px solid transparent;
+  text-decoration: underline;
+}
+
+.buttons a.passive:hover {
+  background: #eee;
+  border: 1px solid #eee;
+  color: #646464;
+}

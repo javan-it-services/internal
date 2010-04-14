@@ -1,0 +1,18 @@
+/* Tables */
+table.list { border-collapse: collapse; width:100%; border-left: 1px solid #eaeaea;border-right: 1px solid #eaeaea; }
+/*td, th { border-bottom: 1px solid rgb(215, 215, 215);}*/
+table.list th { background: transparent url('img/dark-table-head.gif') repeat-x scroll 0pt 0pt; text-shadow: 1px 1px 0pt rgb(255, 255, 255); }
+/*table.list th.first {-moz-border-radius-topleft: 4px;}*/
+/*table.list th.last { background: transparent url('img/dark-table-head-right.gif') no-repeat scroll right top; }*/
+
+table.list th { padding: 6px 0pt 6px 12px;}
+table.list td { border-bottom: 1px solid #EAEAEA;padding: 8px 6px; color: rgb(76, 76, 76);}
+
+table.list td.notes {margin:0;padding: 0px; color: rgb(76, 76, 76);border-bottom:none;background:#fff;}
+table.list td.hidden {padding: 0px; color: rgb(76, 76, 76); border-bottom: none; display:none;}
+table.list tr.altrow { background: #f9f9f9 none repeat scroll 0% 0%;}
+table.list tr.actions td{padding:0px 8px 4px;}
+table.list tr { background: #fff none repeat scroll 0% 0%; }
+table.form { border-collapse: collapse; width:100%;}
+table.list td.money{text-align:right;}
+th.money{text-align:right;}

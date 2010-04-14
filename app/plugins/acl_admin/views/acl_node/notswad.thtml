@@ -1,0 +1,5 @@
+<h1>The Acl Node class</h1>
+<p>At the time of writing, some of the functionality for the cake acl node class is missing/incorrect. There are a number of tickets created for these, but if you are interested to see what changes have been made to the ACL node class they are available on <?php echo $html->link('Noswad','http://www.noswad.me.uk/AclAdmin/AclNode')?>.</p>
+<p>Below is <strong>your own</strong> acl node class.</p>
+<?php highlight_string($data); ?>
+</div>

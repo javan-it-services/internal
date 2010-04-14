@@ -1,0 +1,25 @@
+<h1>Current ACOs</h1>
+<p>To see the controller and methods go to the <?php echo $html->link('application level view', "/$Plugin/{$this->name}") ?>.</p>
+<table>
+<?php
+$pagination->setPaging($paging);
+$th = array (
+            $pagination->sortBy('lft','Left'),
+            $pagination->sortBy('rght','Right'),
+            $pagination->sortBy('alias','Aco Alias'),
+            'Actions'
+);
+echo $html->tableHeaders($th);
+foreach ($acos as $acoArray)
+{
+    $tr = array (
+		$acoArray['Aco']['lft'],
+		$acoArray['Aco']['rght'],
+        $html->link($acoArray['Aco']['alias'],"/$Plugin/acos/page_view/".$acoArray['Aco']['alias'],array('title'=>'limit results to '.$acoArray['Aco']['alias'].' and children')),
+        $html->link('permissions',"/$Plugin/permissions/PUBLIC/".$acoArray['Aco']['alias'],array('title'=>'see permissions for '.$acoArray['Aco']['alias'])).' - '.$html->link('delete',"/$Plugin/acos/delete/".$acoArray['Aco']['alias'])
+        );
+    echo $html->tableCells($tr,array('class'=>'altRow'),array('class'=>'evenRow'));
+}
+?>
+</table>
+<?php echo $this->renderElement('pagination'); ?>

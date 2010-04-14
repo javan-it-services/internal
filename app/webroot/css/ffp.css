@@ -1,0 +1,35 @@
+/* FancyForm styles */
+
+/*adjust to taste*/
+
+label.checked,
+label.unchecked,
+label.selected,
+label.unselected{
+                  position:relative;
+                  display:block;
+                  padding:0.5em;
+                  padding-left:32px;
+                  background-position:8px center;
+                  background-repeat:no-repeat;
+                  border:1px solid #252525;
+                  margin:3px;
+                  clear:both;
+                  cursor:pointer
+                  }
+
+label.checked{
+               background-image:url(img/chk_on.png);
+               }
+
+label.unchecked{
+                 background-image:url(img/chk_off.png);
+                 }
+
+label.selected{
+                background-image:url(img/rdo_on.png);
+                }
+
+label.unselected{
+                  background-image:url(img/rdo_off.png);
+                  }

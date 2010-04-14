@@ -1,0 +1,24 @@
+<h1>The Acl Node class</h1>
+<p>At the time of writing, some of the functionality for the cake acl node class is missing/incorrect. 
+There are a number of tickets created for these, but if you are interested to see what changes have been made to the ACL node class for this site 
+they are shown below. It may contain errors of course, and problems (if any) with the functionality of the online demo will be attributable to 
+the changes to this class.</p>
+<p> If you download the plugin and notice different behaviour from the online demo, this is the file that you need to take a look at; unless it's 
+underirable behaviour of course in which case please <?php echo $html->link('let me know','/contact'); ?>. The only points to take note of are the 
+way set parent has been rewritten to allow moving of groups of nodes, and the create method has been modified to append new children rather than 
+insert as the first child and move everything else along.</p>
+<p>To see just the file contents see the <?php echo $html->link('plain text version','/'.$Plugin.'/'.$this->name.'/'.$this->action.'/plain')?>.</p>
+<style>
+.li1 {background:#f4f4f4;}
+.li2 {background:#ffffff;}
+<?php echo $geshi->get_stylesheet();?>
+</style>
+<div style="font-size:12px;padding:6px;border: 1px solid #ddd;">
+<?php
+	$geshi->set_header_type(GESHI_HEADER_DIV);
+	$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, 2);
+	$geshi->set_tab_width('4');
+	$geshi->set_footer_content('Parsed in <TIME> seconds,  using GeSHi <VERSION>');
+	$geshi->set_footer_content_style('font-family: Verdana, Arial, sans-serif; color: #808080; font-size: 70%; font-weight: bold; background-color: #f0f0ff; border-top: 1px solid #d0d0d0; padding: 2px;');
+	echo $geshi->parse_code();
+?>

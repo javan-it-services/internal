@@ -1,0 +1,58 @@
+<h1>View the actual ACO tree</h1>
+<p>To see the controller and methods go to the <?php echo $html->link('application level view', "/$Plugin/{$this->name}") ?>.</p>
+<p>Got a million results? Go to the <?php echo $html->link('paged view', "/$Plugin/{$this->name}/page_view") ?>.</p>
+<div>
+<h2>Quick Create</h2>
+<?php
+echo $html->formTag("/$Plugin/{$this->name}/create");
+echo $form->generateSelectDiv('Aco/parent', 'Parent',$acolist,'ROOT');
+echo $form->generateInputDiv('Aco/alias', 'Alias');
+echo $form->generateSubmitDiv('Create');
+?>
+</form>
+</div>
+<div>
+<h2>Quick Promote/Demote</h2>
+<?php
+echo $html->formTag("/$Plugin/{$this->name}/setParent");
+echo $form->generateSelectDiv('Aco/alias', 'Move this ->',$acolist,'');
+echo $form->generateSelectDiv('Parent/alias', 'Under this ->',$acolist,'ROOT');
+echo $form->generateSubmitDiv('Move');
+?>
+</form>
+</div>
+<div>
+<h2>Current ACOs</h2>
+<?php
+if(!empty($acos)) {
+$childCount = 0;
+echo '<ul>';
+foreach ($acos as $i=>$acoArray) {
+    echo '<li>'.$html->link($acoArray['Aco']['alias'],"/$Plugin/permissions/PUBLIC/".$acoArray['Aco']['alias'],array('title'=>'see permissions for '.$acoArray['Aco']['alias']));
+	echo ' '.$html->link('(delete)',"/$Plugin/acos/delete/".$acoArray['Aco']['alias']);
+	if ($acoArray['Aco']['rght']<>$acoArray['Aco']['lft']+1) {// Has some children
+		echo '<ul>';
+		$childCount++;
+	}	
+	if (isset($acos[$i+1])) { // If it's not the last item
+		if($acoArray['Aco']['rght']<$acos[$i+1]['Aco']['lft']) { // Close uls
+			for ($j=1;$j<=($acos[$i+1]['Aco']['lft']-$acoArray['Aco']['rght']-1);$j++) {
+				echo '</li></ul>';
+				$childCount--;
+			}
+		} else {
+			echo '</li>';
+		}
+	} else { // Last item in data list, close ul items
+		for (;$childCount>=0;$childCount--) {
+			echo '</ul>';
+		}
+		echo '</li>';
+	}
+} 
+echo '</ul>';
+} else {
+	echo "No ACOs currently Defined";
+} 
+?>
+</div>

@@ -1,0 +1,2 @@
+<h1><?php echo $plugin ?> Download</h1>
+<p>Enjoy the download.</p>

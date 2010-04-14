@@ -1,0 +1,31 @@
+<h1>Access Control Made Simple</h1>
+<p>This plugin will allow you to edit the access control rules for your applicaiton. 
+It does not in itself add access control <i>to</i> your application - for that you need to query the rules you define here in your app_controller 
+or whever else is most appropriate to your situation. However, the download does come with access control applied to the plugin itself by default, 
+to see and/or edit take a look at the generic 'noswad' controller that is used in the download.</p>
+<p>The plugin is currently using <strong><?php echo $session->read('Acl.Mode') ?> mode</strong>, which means that acos will be of the form
+<strong>
+<?php if ($session->read('Acl.Mode')=='full') {
+	echo "app:controller:action or plugin:controller:action";
+} else {
+	echo "controller:action";	
+}
+?></strong>. 
+</p>
+<p>You can run a test to see if an aro can access an aco or not here, or view more detailed info by using the menu 
+<?php
+if (strpos( env("SERVER_NAME"), 'noswad')!==false) {
+	echo 'over there ->';
+} else {
+	echo 'above.';
+}
+?></p>
+<h2>Quick Check</h2>
+<p>Can USER access the url/resource?</p>
+<?php
+echo $ajax->form("/$Plugin/test",null,array('update'=>'test_result'));
+echo $form->generateSelectDiv('Test/aro', 'User',$aros,'PUBLIC');
+echo $form->generateSelectDiv('Test/aco', 'Resource',$acos,'ROOT');
+echo $form->generateSubmitDiv('Test');
+?>
+<div id='test_result'></div>

@@ -1,0 +1,21 @@
+<?php 
+$db = ConnectionManager::getInstance();
+$connections = get_object_vars($db->config);
+$connection = $db->getDataSource('default');
+$sources = $connection->listSources();
+$prefix = $connection->config['prefix'];
+// Add the prefix to the sql
+$sql = file_get_contents (APP.'plugins'.DS.$this->plugin.DS.'structure.sql');
+if ($prefix) {
+	$sql = str_replace("TABLE ", "TABLE $prefix", $sql);
+}
+$this->set('sql',$sql);
+?>
+<h1>Missing Database table</h1>
+<div>
+<p>The sql for all of the models used in this plugin is shown below.</p>
+<p>In the event that the <strong><?php echo $model ?></strong> model (<i><?php echo $table; ?></i> table) is not listed, the missing table is not related to the plugin, but something inherited.</p>
+<pre style='padding:20px;'>
+<?php echo $sql ?>
+</pre>
+</div>

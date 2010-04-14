@@ -1,0 +1,256 @@
+/*
+The Ultimate Navigation with CSS level 3, Mon Dec 1st, 2008
+Copyright (C) 2008 Bogdan Pop of WebRaptor (http://www.bogdanpop.info, http://www.webraptor.eu)
+Published by Freelancer Magazine (http://www.freelancermagazine.com)
+Special thanks to Taiyab Raja of 6 Creations (http://www.6creations.com)
+Special thanks to John Cottone of Tone Media, LLC
+
+Released under Creative Commons Attribution 3.0 (http://creativecommons.org/licenses/by/3.0)
+If you modify these source codes and use them in your own projects you must not modify or remove the above credits. However, you may add your own below this line.
+*/
+/* GENERAL CSS CONFIG */
+/* MENU CONFIG */
+#menubar
+	{
+	width:100%;
+	height:42px;
+	margin:0 auto;
+	padding:0;
+	background-image:url('img/menubarbg.png');
+	background-repeat:repeat-x;
+	line-height:42px;
+	font-size:1em;
+    font-weight:bold;
+	z-index:4000;
+    letter-spacing:1px;
+	}
+ul#navmenu
+	{
+	margin:0 auto;
+	padding:0;
+	list-style: none;
+	border: 0 none;
+	margin:0 auto;
+    width: 960px;
+	}
+
+ul#navmenu li {
+	margin: 0;
+	border: 0 none;
+	padding:0;
+	float: left; /*For Gecko*/
+	display: inline;
+	list-style: none;
+	position: relative;
+}
+
+ul#navmenu ul {
+	margin: 0;
+	border: 0 none;
+	padding: 0;
+	width: 250px;
+	list-style: none;
+	display: none;
+	position: absolute;
+	top: 25px;
+	left: 0;
+	-webkit-border-radius: 5px;
+}
+
+ul#navmenu ul li {
+	float: none; /*For Gecko*/
+	display: block !important;
+	display: inline; /*For IE*/
+	background-image:none;
+}
+
+/* Root Menu */
+ul#navmenu a {
+	float: none !important; /*For Opera*/
+	float: left; /*For IE*/
+	display: block;
+	color:#113355;
+	line-height:42px;
+	text-decoration: none;
+	height: auto !important;
+	height: 1%; /*For IE*/
+	text-align:center;
+}
+ul#navmenu a span{
+    padding: 4px 12px;
+}
+ul#navmenu a.current span{
+	color:#637BAC;
+	text-shadow: 0pt 1px 0pt #fff;
+}
+/* Root Menu Hover Persistence */
+ul#navmenu a:hover,
+ul#navmenu a.current:hover span,
+ul#navmenu li:hover a,
+ul#navmenu li.iehover a {
+	border-bottom:none;
+	color: #FFFFFF;
+}
+
+/* 2nd Menu */
+ul#navmenu li:hover li a,
+ul#navmenu li.iehover li a {
+	float: none;
+	line-height:25px;
+	width:230px;
+	text-align:left;
+	color: #000000;
+	background-image:none;
+	background-color:#FFF;
+	border-bottom:none;
+}
+
+/* 2nd Menu Hover Persistence */
+ul#navmenu li:hover li a:hover,
+ul#navmenu li:hover li:hover a,
+ul#navmenu li.iehover li a:hover,
+ul#navmenu li.iehover li.iehover a {
+	color: #FFF;
+	background-image:url('images/menu_ex_hover_bg.jpg');
+	background-repeat:repeat-x;
+	border-bottom:none;
+}
+
+ul#navmenu ul li
+	{
+	width:250px;
+	padding:0px;
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-top:none;
+	border-bottom:none;
+	}
+ul#navmenu ul li.start
+	{
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-top:none;
+	border-bottom:none;
+	padding-top:5px;
+	}
+ul#navmenu ul li.end
+	{
+	-moz-border-radius-bottomleft:7px;
+	-webkit-border-bottom-left-radius:7px;
+	-moz-border-radius-bottomright:7px;
+	-webkit-border-bottom-right-radius:7px;
+	padding-bottom:5px;
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-top:none;
+	}
+
+ul#navmenu ul li.expand a
+	{
+	background-image:url('images/menu_ex_arrow_defa.jpg');
+	background-repeat:no-repeat;
+	background-position:right;
+	border-bottom:none;
+	}
+
+ul#navmenu li:hover li.expand a:hover,
+ul#navmenu li:hover li.expand:hover a
+	{
+	background-image:url('images/menu_ex_arrow_hover.jpg');
+	background-repeat:no-repeat;
+	background-position:right;
+	border-bottom:none;
+	}
+
+/* 3rd Menu */
+ul#navmenu li:hover li.expand:hover li a,
+ul#navmenu li.iehover li.iehover li a {
+	background: #FFFFFF;
+	color: #000000;
+	background-image:none;
+	border-bottom:none;
+}
+
+/* 3rd Menu Hover Persistence */
+ul#navmenu li:hover li.expand:hover li a:hover,
+ul#navmenu li:hover li.expand:hover li:hover a,
+ul#navmenu li.iehover li.iehover li a:hover,
+ul#navmenu li.iehover li.iehover li.iehover a {
+	background: #FFFFFF;
+	color: #FFF;
+	background-image:url('images/menu_ex_hover_bg.jpg');
+	background-repeat:repeat-x;
+	border-bottom:none;
+}
+
+ul#navmenu ul li ul li
+	{
+	width:250px;
+	padding:0px;
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-bottom:none;
+	border-top:none;
+	}
+ul#navmenu ul li ul li.start
+	{
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-bottom:none;
+	padding-top:5px;
+	-moz-border-radius-topright:7px;
+	-webkit-border-top-right-radius:7px;
+	}
+ul#navmenu ul li ul li.end
+	{
+	-moz-border-radius-bottomleft:7px;
+	-webkit-border-bottom-left-radius:7px;
+	-moz-border-radius-bottomright:7px;
+	-webkit-border-bottom-right-radius:7px;
+	padding-bottom:5px;
+	background-color:#FFF;
+	border: 1px solid #999999;
+	border-top:none;
+	}
+
+/* 4th Menu */
+ul#navmenu li:hover li:hover li:hover li a,
+ul#navmenu li.iehover li.iehover li.iehover li a {
+	background: #CCCCCC;
+	color: #000000;
+}
+
+/* 4th Menu Hover */
+ul#navmenu li:hover li:hover li:hover li a:hover,
+ul#navmenu li.iehover li.iehover li.iehover li a:hover {
+	background: #16171B;
+	color: #FFF;
+}
+
+ul#navmenu ul ul,
+ul#navmenu ul ul ul {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 250px;
+	margin: 0px;
+	-webkit-box-shadow: 3px 3px 20px #000;
+	-webkit-border-radius: 5px;
+}
+
+/* Do Not Move - Must Come Before display:block for Gecko */
+ul#navmenu li:hover ul ul,
+ul#navmenu li:hover ul ul ul,
+ul#navmenu li.iehover ul ul,
+ul#navmenu li.iehover ul ul ul {
+	display: none;
+}
+
+ul#navmenu li:hover ul,
+ul#navmenu ul li:hover ul,
+ul#navmenu ul ul li:hover ul,
+ul#navmenu li.iehover ul,
+ul#navmenu ul li.iehover ul,
+ul#navmenu ul ul li.iehover ul {
+	display: block;
+}

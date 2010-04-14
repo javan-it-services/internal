@@ -1,0 +1,52 @@
+hr { border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color rgb(191, 191, 191); border-width: 0pt 0pt 1px; clear: both; height: 1px; margin: 10px 0; }
+abbr { border: 0pt none ; cursor: help; }
+form, fieldset, legend, img { border: 0pt none ; }
+form h3 { padding-bottom: 9px; font-size: 2em; line-height: 27px; color: rgb(100, 100, 100); }
+form ol, form ul { margin: 0pt; list-style-type: none;  }
+form li { margin: 10px 0pt 10px; padding: 10px 0; }
+form li.separator { border-bottom: 1px solid rgb(238, 238, 238);}
+form ol li.highlight{border: 1px dotted #ccc; background:#f5f5f5}
+form ol li.highlight p{color:#000}
+label { display: block; line-height: 18px; color:#456; font-weight:bold; }
+label span { color: rgb(153, 204, 204); }
+label:after { content: ":"; }
+label.ghost:after { color:#ffffff; }
+label.lead:after, label.leading:after, label.gutter:after, .checkbox label:after, .checkboxes label:after, .radios label:after { content: ""; }
+form abbr { font-size: 1.6em; font-style: normal; vertical-align: bottom; color: rgb(153, 204, 204); }
+form .helper { margin: 0pt; float: left; font-style: normal; color: rgb(130, 130, 130); }
+form .error { color: rgb(255, 0, 0); }
+form li{ clear: both; }
+form label{ float: left; width: 130px; margin-right: 1%; text-align: right; }
+form.login label{ float: left; width: 80px; margin-right: 1%; text-align: right; }
+form label{ line-height: 29px; }
+form input[type="text"], form input[type="password"], form textarea { padding: 6px 7px; width: 32%; margin-right: 1%; float: left; }
+form input[type="password"].inputLogin, form input[type="text"].inputLogin{width:180px}
+form select{font-size:1.1em;margin-top: 4px; margin-right: 1%; width: 34%; float: left; padding:2px}
+form .helper{ float: left; width: 30%; margin-top: 9px; font-size: 0.9em; line-height: 11px; }
+form ol li.message{ margin-left: 138px; }
+form li p{ margin: 0pt; float: left; line-height: 29px; font-size: 1em;}
+form ol li .message p{ line-height: 18px; float: none; }
+form ol li p.extra_helper{ margin: 0 0 -20px 138px; line-height: 17px; font-size: 0.9em; color: rgb(130, 130, 130); float: none; padding-right: 18px; clear: both; }
+form ol li.message p{ float: none; padding-left: 23px; line-height: 18px; font-size: 1em; }
+form p{ margin: -9px 0pt 9px 33%; display: block; padding-top: 0pt; line-height: 18px;color:#999 }
+form li.checkbox{ padding-left: 15%; }
+form li.checkbox label{ width: auto; margin-right: 0pt; line-height: 18px; text-align: left; }
+form .checkbox label input { border: medium none ; padding: 0pt; width: auto; margin-right: 9px; }
+form .checkboxes { padding: 9px 0pt; overflow: hidden; }
+form .checkboxes li { padding: 0pt; float: left; width: 33%; margin-bottom: 3px; }
+form .checkboxes li.first { width: 31.5%; padding-left: 1.5%; }
+form .checkboxes li input { border: 0pt none ; margin: 0pt 3px 0pt 0pt; background: transparent none repeat scroll 0% 0%; float: none; vertical-align: top; }
+form .checkboxes li select { margin: 0pt 0pt 0pt 4px; padding: 0pt; float: none; }
+form ol li.checkbox p.extra_helper{ margin: 0pt 0pt 0pt 23px; }
+.radios ul { margin: 0pt; font-size: 1em; }
+.radios ul li { padding: 0pt; }
+.radios ul li p { font-size: 1em; }
+.radios ul li label { margin: 0pt; padding: 0pt; display: inline; float: none; text-align: left; line-height: 18px; }
+.radios ul li label input { margin: 2px; background: transparent none repeat scroll 0% 0%; float: left; width: auto; }
+form .radios{ float: left; width: 66%; }
+form .radios ul li{ margin: 0pt 27px 0pt 0pt; clear: none; float: left; line-height: 27px; }
+form .radios ul li label{ float: none; display: inline; text-align: left; }
+form .radios ul li label input{ margin: 8px 2px 0pt 0pt; background: transparent none repeat scroll 0% 0%; float: left; width: auto; }
+form .radios ul li ul li{ margin: 0pt; float: left; }
+
+form.plain label{ width: auto}

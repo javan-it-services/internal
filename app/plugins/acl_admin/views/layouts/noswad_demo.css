@@ -1,0 +1,51 @@
+#menu{
+	height:50px;
+	background:grey;
+}
+#menu ul{
+	width:100%;
+}
+
+#menu ul li{
+	list-style-type:none;
+	display:inline;
+}
+
+#menu ul li a{
+	font-weight:bold;
+	display:block;
+	float:left;
+	color:#000;
+	width:12%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	margin:0 auto;
+}
+#menu ul li a:hover, #menu ul li a.active{
+	background:white; 
+}
+
+.flash_message {
+	text-align: center;
+	position: relative;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding:4px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	background-color: #e5f0fc;
+	border: 1px solid #ccc;
+}
+.flash_warn {
+	background-color: #e5f0fc;
+	border:1px solid yellow;
+}
+.flash_error {
+	background-color:#FFE8E8;
+	border:1px solid red;
+	color: red;
+}
+#pagination {
+	text-align:center;
+}

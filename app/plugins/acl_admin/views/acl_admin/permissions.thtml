@@ -1,0 +1,56 @@
+<h1>Select who can access what</h1>
+<?php
+echo $ajax->link("Setup OWNER access to ROOT","/$Plugin/allow/OWNER/ROOT",array('update'=>'content','title'=>'will assign the group OWNER access to everything'));
+$componentParts = explode (":",$aco);
+if (count($componentParts)>1) {
+	array_pop($componentParts);
+	$OneLevelUp = implode(":",$componentParts);
+} else {
+	$OneLevelUp = "ROOT";
+}
+if (!$data) {
+	echo "<br />Ooops nothing for this aco, it has no children. ";
+	echo $html->link("Back","/$Plugin/permissions/$aro/$OneLevelUp",array('update'=>'content'));
+	return;
+}
+?>
+<table>
+<?php
+if (($aro=='PUBLIC')&&($aco=='ROOT')) {
+	$BackLink = 'Use headings to navigate';
+} elseif ($aco=="ROOT") {
+	$BackLink = $ajax->link('PUBLIC ROOT',"/$Plugin/permissions/PUBLIC/ROOT",array('update'=>'content','title'=>'Back to the top'));	
+} else {
+	$BackLink = $ajax->link($aro.' '.$OneLevelUp,"/$Plugin/permissions/$aro/".$OneLevelUp,array('update'=>'content','title'=>'Back up one level'));
+}
+
+$th = array (
+    $BackLink,
+);
+foreach($data[$aro] AS $acoAlias => $access) {
+	if ($acoAlias==$aco) {
+		$th[] = $acoAlias;
+	} else {
+		$th[] = $ajax->link($acoAlias,"/$Plugin/permissions/$aro/".$acoAlias,array('update'=>'content'));	
+	}
+}
+echo $html->tableHeaders($th);
+foreach($data as $aroAlias => $acoArray) {
+	$tr = null;
+	if ($aroAlias==$aro) {
+		$tr[] = $aroAlias;
+	} else {
+		$tr[] = $ajax->link($aroAlias,"/$Plugin/permissions/$aroAlias/".$aco,array('update'=>'content'));
+	}
+	foreach ($acoArray as $acoAlias => $access) {
+		$permission = $access=="deny"?"allow":"deny";			
+		$current = $access=="deny"?"denied":"allowed";
+	    $tr[] = $ajax->link($current ,"/$Plugin/{$permission}/$aroAlias/$acoAlias",array('update'=>'content','title'=>$permission.' access for '.$aroAlias.' to '.$acoAlias));
+	}
+echo $html->tableCells($tr);
+if ($acoAlias==$aco) {
+	echo $html->tableCells(array());
+}
+}
+?>
+</table>

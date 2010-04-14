@@ -1,0 +1,5 @@
+<h1>No User Model</h1>
+<div>
+<p>You need to tell this plugin what your user model is called to be able to use this function.</p>
+<p>If you don't have users already set up on your system, you need an authentication solution such as <?php echo $html->link('DAuth','http://bakery.cakephp.org/articles/view/147')?></p>
+</div>

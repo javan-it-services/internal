@@ -1,0 +1,33 @@
+<h1>Current Rules</h1>
+<table>
+<?php
+$pagination->setPaging($paging);
+$th = array (
+            $pagination->sortBy('id','Rule Number'),
+            $pagination->sortBy('alias','Aro','Aro'),
+            $pagination->sortBy('alias','Aco','Aco'),
+            'Create',
+            'Read',
+            'Update',
+            'Delete',
+            'Actions'
+            
+);
+echo $html->tableHeaders($th);
+foreach ($data as $Array)
+{
+    $tr = array (
+        $Array['ArosAco']['id'],
+		$ajax->link($Array['Aro']['alias'],"/$Plugin/permissions/{$Array['Aro']['alias']}/ROOT",array('update'=>'content','title'=>'See permissions for '.$Array['Aro']['alias'])),	
+		$ajax->link($Array['Aco']['alias'],"/$Plugin/permissions/PUBLIC/{$Array['Aco']['alias']}",array('update'=>'content','title'=>'See permissions for '.$Array['Aco']['alias'])),	
+		$Array['ArosAco']['_create'],
+		$Array['ArosAco']['_read'],
+		$Array['ArosAco']['_update'],
+		$Array['ArosAco']['_delete'],
+		$ajax->link('Delete',"/$Plugin/ArosAcos/delete/".$Array['ArosAco']['id'],array('update'=>'content','title'=>'Delete this defenition'))	
+        );
+    echo $html->tableCells($tr,array('class'=>'altRow'),array('class'=>'evenRow'));
+}
+?>
+</table>
+<?php echo $this->renderElement('pagination'); ?>

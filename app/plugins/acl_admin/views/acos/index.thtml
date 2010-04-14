@@ -1,0 +1,125 @@
+<?php 
+$thisMode = $session->read("Acl.Mode");
+$altMode = $thisMode=='full'?'lite':'full'; 
+?>
+<h1>Select want you want to manage. Currently using <?php echo $html->link($thisMode.' mode', "/$Plugin/mode/$altMode",array('title'=>'Switch to '.$altMode.' mode')) ?></h1>
+<p>Note that:</p><ul><li>The ROOT node is created automatically by the plugin 
+if it doesn't already exist, as such it isn't possible to remove the overall application ACO.</li><li>The ACOs from lite mode are incompatible 
+with the ACOs from full mode, hence you won't see the same results by simply switching modes.</li></ul>
+<p>To see the data only go to the <?php echo $html->link('data view', "/$Plugin/{$this->name}/data_view") ?>.</p>
+<p>Got a million results? Go to the <?php echo $html->link('paged view', "/$Plugin/{$this->name}/page_view") ?>.</p>
+<table>
+<?php
+	if ($altMode=='lite') {
+		$th = array (
+		    "Section",
+		    "Controller",
+		    "ACL On?",
+		    "Add Acl",
+		    "Remove Acl"
+			);
+	} else {
+		$th = array (
+		    "Controller",
+		    "ACL On?",
+		    "Add Acl",
+		    "Remove Acl"
+			);
+	}
+echo $html->tableHeaders($th);
+foreach($sections AS $sectionName => $section) {
+	if ($section['status']=='on') {
+		$SectionType = 'on ('.$section['type'].')';
+		if ($altMode=='full') {
+			$RemoveLinks = $html->link('Remove', "/$Plugin/{$this->name}/delete/ROOT");
+		} else {
+			$RemoveLinks = $html->link('Remove', "/$Plugin/{$this->name}/delete/$sectionName");
+		}
+		if ($section['type']=='granular') {
+			$AddLinks =	$html->link('Recheck', "/$Plugin/{$this->name}/create/$sectionName");
+			$RemoveLinks .= ' - ';
+			if ($altMode=='full') {
+				$RemoveLinks .= $html->link('Go Global', "/$Plugin/{$this->name}/delete/ROOT/true");
+			} else {
+				$RemoveLinks .= $html->link('Go Global', "/$Plugin/{$this->name}/delete/$sectionName/true");
+			}
+		} else {
+			$AddLinks =	$html->link('Go Granular', "/$Plugin/{$this->name}/create/$sectionName");
+		}
+	} else {
+		$SectionType = 'off';
+		$AddLinks =	 $html->link('Global', "/$Plugin/{$this->name}/create/$sectionName/global");
+		$AddLinks .= ' - ';
+		$AddLinks .= $html->link('Granular', "/$Plugin/{$this->name}/create/$sectionName");
+		$RemoveLinks = ' - ';
+	}
+	if ($altMode=='lite') {
+	    $tr = array (
+	        $sectionName,
+	        ' - ',
+	        $SectionType,
+	        $AddLinks,
+			$RemoveLinks
+	        );
+	} else {
+	    $tr = array (
+	        'Application',
+	        $SectionType,
+	        $AddLinks,
+			$RemoveLinks
+	        );
+	}
+    echo $html->tableCells($tr,array('style'=>'background:#E2E2E2'),array('style'=>'background:transparent'));
+    
+	foreach($section['children'] AS $controllerName => $controller) {
+		if ($altMode=='full') {
+			$ControllerAlias = $controllerName;
+		} else {
+			$ControllerAlias = $sectionName.':'.$controllerName;
+		}
+		$ControllerType = $controller['status']=='on'?'on ('.$controller['type'].')':'off';
+		if ($controller['status']=='on') {
+			$SectionType = 'on ('.$section['type'].')';
+			if ($controller['type']=='granular') {
+				$AddLinks =	$html->link('Recheck', "/$Plugin/{$this->name}/create/$ControllerAlias");
+				$RemoveLinks = $html->link('Remove', "/$Plugin/{$this->name}/delete/$ControllerAlias");
+				$RemoveLinks .= ' - ';
+				$RemoveLinks .= $html->link('Go Global', "/$Plugin/{$this->name}/delete/$ControllerAlias/true");
+			} elseif ($controller['type']=='global') {
+				$AddLinks =	$html->link('Go Granular', "/$Plugin/{$this->name}/create/$ControllerAlias");
+				$RemoveLinks = $html->link('Remove', "/$Plugin/{$this->name}/delete/$ControllerAlias");
+			} else {
+				$AddLinks =	 $html->link('Global', "/$Plugin/{$this->name}/create/$ControllerAlias/global");
+				$AddLinks .= ' - ';
+				$AddLinks .=	$html->link('Granular', "/$Plugin/{$this->name}/create/$ControllerAlias");
+				$RemoveLinks = ' - ';
+			}
+		} else {
+			$SectionType = 'off';
+			$AddLinks =	 $html->link('Global', "/$Plugin/{$this->name}/create/$ControllerAlias/global");
+			$AddLinks .= ' - ';
+			$AddLinks .= $html->link('Granular', "/$Plugin/{$this->name}/create/$ControllerAlias");
+			$RemoveLinks = ' - ';
+		}
+		if ($altMode=='lite') {
+		    $tr = array (
+		        " - ",
+		        $controllerName,
+		        $ControllerType,
+		        $AddLinks,
+		        $RemoveLinks
+		        );
+		} else {
+		    $tr = array (
+		        $controllerName,
+		        $ControllerType,
+		        $AddLinks,
+		        $RemoveLinks
+		        );
+		}
+	    echo $html->tableCells($tr,array('style'=>'background:#E2E2E2'),array('style'=>'background:transparent'));
+	}
+    echo $html->tableCells(array());
+}
+?>
+</table>

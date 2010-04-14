@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>NoswaD Demo Fatal Error</title>          
+<?php
+echo '<style type="text/css">';
+echo file_get_contents(dirname(__FILE__).DS.'noswad_demo.css');
+echo '</style>';
+?>
+</head>
+<body>
+	<div id="container">
+		<div id='menu'></div>
+		<div id="content">
+			<?php 
+			if ($session->check('Message.flash')) {
+				$session->flash();
+			}
+			echo $content_for_layout;
+			?>
+		</div>
+		<div id="footer">
+			&nbsp;
+		</div>
+	</div>
+	<?php echo $cakeDebug?>
+</body>
+</html>

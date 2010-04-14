@@ -1,0 +1,60 @@
+<h1>Select who you want to manage</h1>
+<div>
+<h2>Quick Create</h2>
+<?php
+echo $html->formTag("/$Plugin/{$this->name}/create");
+echo $form->generateSelectDiv('Aro/parent', 'Parent',$arolist,'PUBLIC');
+echo $form->generateInputDiv('Aro/alias', 'Alias');
+echo $form->generateSubmitDiv('Create');
+?>
+</form>
+</div>
+<br />
+<div>
+<h2>Quick Promote/Demote</h2>
+<?php
+echo $html->formTag("/$Plugin/{$this->name}/setParent");
+echo $form->generateSelectDiv('Aro/alias', 'Move this ->',$arolist,'');
+echo $form->generateSelectDiv('Parent/alias', 'Under this ->',$arolist,'PUBLIC');
+echo $form->generateSubmitDiv('Move');
+?>
+</form>
+</div>
+<br />
+<div>
+<h2>Current Users / Groups / Roles</h2>
+<p>Got a million results? Go to the <?php echo $html->link('paged view', "/$Plugin/{$this->name}/page_view") ?>.</p>
+<?php
+if(!empty($aros)) {
+$childCount = 0;
+echo '<ul>';
+foreach ($aros as $i=>$aroArray) {
+    echo '<li>'.$html->link($aroArray['Aro']['alias'],"/$Plugin/permissions/".$aroArray['Aro']['alias'].'/ROOT',array('title'=>'see permissions for '.$aroArray['Aro']['alias']));
+	echo ' '.$html->link('(delete)',"/$Plugin/aros/delete/".$aroArray['Aro']['alias']);
+	if ($aroArray['Aro']['rght']<>$aroArray['Aro']['lft']+1) {// Has some children
+		echo '<ul>';
+		$childCount++;
+	}	
+	if (isset($aros[$i+1])) { // If it's not the last item
+		if($aroArray['Aro']['rght']<$aros[$i+1]['Aro']['lft']) { // Close uls
+			for ($j=1;$j<=($aros[$i+1]['Aro']['lft']-$aroArray['Aro']['rght']-1);$j++) {
+				echo '</ul></li>';
+				$childCount--;
+			}
+		} else {
+			echo '</li>';
+		}
+	} else { // Last item in data list, close ul items
+		for (;$childCount>=0;$childCount--) {
+			echo '</ul>';
+		}
+		echo '</li>';
+	}
+}
+echo '</ul>';
+}
+?>
+</div>
+<div>
+<h2><?php echo $html->link('Load from user table',"/$Plugin/{$this->name}/load"); ?></h2>
+</div>

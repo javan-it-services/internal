@@ -1,0 +1,21 @@
+<?php
+$db = ConnectionManager::getInstance();
+$connections = get_object_vars($db->config);
+$source = defined('ACL_DATABASE')?ACL_DATABASE:'default';
+$connection = $db->getDataSource($source);
+$sources = $connection->listSources();
+$prefix = $connection->config['prefix'];
+// Add the prefix to the sql
+$sql = file_get_contents (CONFIGS.'sql'.DS.'db_acl.sql');
+if ($prefix) {
+	$sql = r("TABLE ", "TABLE $prefix", $sql);
+}
+?>
+<h1>No ACL Tables</h1>
+<div>
+<p>This plugin is for use adminstering the cake DB ACL solution; to use it you will need to create the ACL tables.</p>
+<p>The sql you need to run is in your config folder, change the prefix if necessary, it's included below:</p>
+<pre style='padding:20px;'>
+<?php echo $sql ?>
+</pre>
+</div>
