@@ -1,4 +1,4 @@
-app/tmp/cache
-app/tmp/logs/
-app/tmp/tests/
+#app/tmp/cache/*
+#app/tmp/logs/*
+#app/tmp/tests/*
 .svn
